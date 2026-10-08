@@ -290,16 +290,25 @@ document.addEventListener('DOMContentLoaded', () => {
   if (showcaseVideo && videoSection) {
     showcaseVideo.muted = true; // Always mute audio
 
+    // Fallback if local source fails or returns LFS pointer on GitHub Pages
+    showcaseVideo.addEventListener('error', () => {
+      const cdnUrl = 'https://media.githubusercontent.com/media/Hamza-aa/GreenLegacy/main/assets/Video/1008.mp4';
+      if (!showcaseVideo.src.includes('media.githubusercontent.com')) {
+        showcaseVideo.src = cdnUrl;
+        showcaseVideo.load();
+        showcaseVideo.play().catch(() => {});
+      }
+    });
+
     const observerOptions = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.2 // Starts when 20% of section is scrolled into view
+      threshold: 0.05 // Starts when 5% of section is in view
     };
 
     const videoObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          showcaseVideo.currentTime = 0; // Reset to beginning whenever arriving at the video
           videoSection.classList.add('is-active');
           const playPromise = showcaseVideo.play();
           if (playPromise !== undefined) {
@@ -312,7 +321,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           videoSection.classList.remove('is-active');
           showcaseVideo.pause();
-          showcaseVideo.currentTime = 0; // Reset video position when leaving
           if (videoPlayIcon) videoPlayIcon.className = 'fas fa-play';
         }
       });
