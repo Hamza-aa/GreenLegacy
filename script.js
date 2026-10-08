@@ -30,6 +30,7 @@ const translations = {
     stat_neighbourhoods_label: "Active Districts",
     stat_accuracy: "98.4%",
     stat_accuracy_label: "AI Verification Rate",
+    stats_disclaimer: "These data are examples of what the app can do.",
     
     cycle_tag: "The Complete Eco-Cycle",
     cycle_title: "How GreenLegacy Works in <span>Simple Steps</span>",
@@ -113,6 +114,7 @@ const translations = {
     stat_neighbourhoods_label: "گەڕەکی چالاک",
     stat_accuracy: "٩٨.٤٪",
     stat_accuracy_label: "دروستیی پشکنینی AI",
+    stats_disclaimer: "ئەم ئامارانە نموونەی کاراییەکانی بەرنامەکەن.",
     
     cycle_tag: "سوڕی تەواوی ژینگە",
     cycle_title: "گرین‌لیگاسی چۆن کاردەکات بە <span>هەنگاوی ئاسان</span>",
