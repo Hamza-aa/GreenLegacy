@@ -224,11 +224,11 @@ function showDownloadToast() {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background: #00C853;
+    background: #0f2a1f;
     color: white;
     padding: 1rem 1.5rem;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,200,83,0.4);
+    box-shadow: 0 10px 30px rgba(15,42,31,0.4);
     font-weight: 700;
     z-index: 9999;
     transition: all 0.3s ease;
