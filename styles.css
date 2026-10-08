@@ -567,6 +567,96 @@ body {
   color: var(--text-muted);
 }
 
+/* Video Showcase Section (Full Screen & Smooth Transitions) */
+.video-showcase-section {
+  background: #000000;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.8s ease;
+}
+
+.video-full-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  opacity: 0.2;
+  transform: scale(0.96);
+  filter: blur(8px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1), filter 1s ease;
+}
+
+.video-showcase-section.is-active .video-full-wrapper {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0px);
+}
+
+.showcase-video {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  display: block;
+}
+
+/* Smooth Transition Overlays for Top & Bottom Page Blending */
+.video-fade-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 160px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.video-fade-overlay.top-fade {
+  top: 0;
+  background: linear-gradient(to bottom, var(--bg-main) 0%, rgba(0, 0, 0, 0.85) 60%, rgba(0, 0, 0, 0) 100%);
+}
+
+.video-fade-overlay.bottom-fade {
+  bottom: 0;
+  background: linear-gradient(to top, var(--bg-surface) 0%, rgba(0, 0, 0, 0.85) 60%, rgba(0, 0, 0, 0) 100%);
+}
+
+.video-overlay-controls {
+  position: absolute;
+  bottom: 35px;
+  right: 35px;
+  z-index: 10;
+}
+
+[dir="rtl"] .video-overlay-controls {
+  right: auto;
+  left: 35px;
+}
+
+.video-play-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.video-play-btn:hover {
+  background: var(--primary-green);
+  transform: scale(1.08);
+}
+
 /* Main Idea Cycle Section */
 .cycle-section {
   padding: 80px 0;

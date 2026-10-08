@@ -280,4 +280,54 @@ function selectAiSample(spot) {
 // Initial Setup
 document.addEventListener('DOMContentLoaded', () => {
   setLanguage('en');
+
+  // Video Scroll Autoplay Setup
+  const showcaseVideo = document.getElementById('showcaseVideo');
+  const videoPlayBtn = document.getElementById('videoPlayBtn');
+  const videoPlayIcon = document.getElementById('videoPlayIcon');
+  const videoSection = document.getElementById('video-showcase');
+
+  if (showcaseVideo && videoSection) {
+    showcaseVideo.muted = true; // Always mute audio
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.2 // Starts when 20% of section is scrolled into view
+    };
+
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          videoSection.classList.add('is-active');
+          const playPromise = showcaseVideo.play();
+          if (playPromise !== undefined) {
+            playPromise.then(() => {
+              if (videoPlayIcon) videoPlayIcon.className = 'fas fa-pause';
+            }).catch(err => {
+              console.log("Autoplay paused by browser:", err);
+            });
+          }
+        } else {
+          videoSection.classList.remove('is-active');
+          showcaseVideo.pause();
+          if (videoPlayIcon) videoPlayIcon.className = 'fas fa-play';
+        }
+      });
+    }, observerOptions);
+
+    videoObserver.observe(videoSection);
+
+    if (videoPlayBtn) {
+      videoPlayBtn.addEventListener('click', () => {
+        if (showcaseVideo.paused) {
+          showcaseVideo.play();
+          if (videoPlayIcon) videoPlayIcon.className = 'fas fa-pause';
+        } else {
+          showcaseVideo.pause();
+          if (videoPlayIcon) videoPlayIcon.className = 'fas fa-play';
+        }
+      });
+    }
+  }
 });

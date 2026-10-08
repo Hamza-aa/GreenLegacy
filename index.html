@@ -101,7 +101,7 @@
       </div>
 
       <!-- Key Impact Stats -->        
-       <div><p style="text-align: center; margin-top: 5rem; font-weight: 600;" data-i18n="stats_disclaimer">These data are examples of what the app can do.</p></div>
+       <div><p style="text-align: center; margin-top: 5rem; font-weight: 600; color: rgba(172, 172, 172, 0.819);" data-i18n="stats_disclaimer">These data are examples of what the app can do.</p></div>
       <div class="hero-stats-bar">
         <div class="stat-item">
           <div class="stat-number" data-i18n="stat_cleanups">1,420+</div>
@@ -121,6 +121,23 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- ==================== VIDEO SHOWCASE SECTION ==================== -->
+  <section class="video-showcase-section" id="video-showcase">
+    <div class="video-fade-overlay top-fade"></div>
+    <div class="video-full-wrapper">
+      <video id="showcaseVideo" muted playsinline loop preload="auto" class="showcase-video">
+        <source src="assets/Video/1008.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-overlay-controls">
+        <button class="video-play-btn" id="videoPlayBtn" title="Play/Pause Video">
+          <i class="fas fa-pause" id="videoPlayIcon"></i>
+        </button>
+      </div>
+    </div>
+    <div class="video-fade-overlay bottom-fade"></div>
   </section>
 
   <!-- ==================== MAIN CYCLE (HOW IT WORKS) ==================== -->
