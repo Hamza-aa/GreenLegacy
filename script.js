@@ -299,6 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          showcaseVideo.currentTime = 0; // Reset to beginning whenever arriving at the video
           videoSection.classList.add('is-active');
           const playPromise = showcaseVideo.play();
           if (playPromise !== undefined) {
@@ -311,6 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           videoSection.classList.remove('is-active');
           showcaseVideo.pause();
+          showcaseVideo.currentTime = 0; // Reset video position when leaving
           if (videoPlayIcon) videoPlayIcon.className = 'fas fa-play';
         }
       });
