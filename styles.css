@@ -534,8 +534,7 @@ body {
 }
 
 /* Stats Counter Bar */
-.hero-stats-bar {
-  margin-top: 1rem;
+.hero-stats-bar {  margin-top: 1rem;
   padding: 1.75rem 2rem;
   background: var(--card-bg);
   border-radius: 20px;
