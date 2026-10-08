@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slemani GreenLegacy| Smart Environmental Platform for Sulaymaniyah</title>
+  <meta name="description" content="GreenLegacy Slemani is a smart environmental platform connecting citizens with the Sulaymaniyah municipality through AI waste reporting, cleanup verification, rewards, and neighbourhood competition." />
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo">
+        <div class="brand-icon">
+          <i class="fas fa-leaf"></i>
+        </div>
+        <div class="brand-name" data-i18n="brand_name">Slemani <span>GreenLegacy</span> </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#cycle" class="nav-link" data-i18n="nav_cycle">How It Works</a></li>
+        <li><a href="#ai-verification" class="nav-link" data-i18n="nav_ai">AI Verification</a></li>
+        <li><a href="#eco-league" class="nav-link" data-i18n="nav_league">Eco-League</a></li>
+        <li><a href="#municipality" class="nav-link" data-i18n="nav_dashboard">Municipality</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <!-- Language Switcher (EN <-> کوردی) -->
+        <button class="lang-btn" onclick="toggleLanguage()" id="langBtn" title="Switch Language">
+          <i class="fas fa-globe"></i>
+          <span id="langBtnText">کوردی</span>
+        </button>
+
+        <!-- Dark/Light Theme Toggle -->
+        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Theme">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+
+        <!-- Direct Download Nav CTA -->
+        
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge" data-i18n="hero_badge">
+            <i class="fas fa-leaf"></i> Smart Environmental Platform for Sulaymaniyah
+          </div>
+          
+          <h1 class="hero-title" data-i18n="hero_title">
+            Keeping <span class="highlight-green">Slemani Clean</span> Through AI & Rewards
+          </h1>
+          
+          <p class="hero-subtitle" data-i18n="hero_subtitle">
+            GreenLegacy Slemani connects citizens with the municipality in a complete smart eco-cycle: Find & report polluted areas, let AI analyze waste, volunteer to clean, get multi-verified, earn rewards, and compete in the Eco-League.
+          </p>
+
+          <div class="hero-cta">
+
+            <div style="display: flex; gap: 1rem; align-items: center; margin-top: 0.5rem;">
+              <a href="#cycle" class="btn btn-secondary">
+                <i class="fas fa-arrow-down"></i> <span data-i18n="nav_cycle">How It Works</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="phone-mockup-wrapper">
+            <img src="assets/images/app_hero_mockup.png" alt="GreenLegacy Slemani Mobile App Interface" class="phone-img" />
+            
+            <!-- Floating Live Badges -->
+            <div class="floating-badge badge-1">
+              <div class="badge-icon bg-green"><i class="fas fa-robot"></i></div>
+              <div class="badge-text">
+                <strong>YOLOv8 AI Active</strong>
+                <span>Waste Level Detected (1-5)</span>
+              </div>
+            </div>
+
+            <div class="floating-badge badge-2">
+              <div class="badge-icon bg-teal"><i class="fas fa-coins"></i></div>
+              <div class="badge-text">
+                <strong>Verified +150 Points</strong>
+                <span>Eco-Points Awarded</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Impact Stats -->
+      <div class="hero-stats-bar">
+        <div class="stat-item">
+          <div class="stat-number" data-i18n="stat_cleanups">1,420+</div>
+          <div class="stat-label" data-i18n="stat_cleanups_label">Verified Cleanups</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-i18n="stat_waste">18.5 Tons</div>
+          <div class="stat-label" data-i18n="stat_waste_label">Waste Removed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-i18n="stat_neighbourhoods">24</div>
+          <div class="stat-label" data-i18n="stat_neighbourhoods_label">Active Districts</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-i18n="stat_accuracy">98.4%</div>
+          <div class="stat-label" data-i18n="stat_accuracy_label">AI Verification Rate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MAIN CYCLE (HOW IT WORKS) ==================== -->
+  <section class="cycle-section" id="cycle">
+    <div class="container text-center" style="text-align: center;">
+      <div class="section-tag" data-i18n="cycle_tag">The Complete Eco-Cycle</div>
+      <h2 class="section-title" data-i18n="cycle_title">How GreenLegacy Works in <span>Simple Steps</span></h2>
+      <p class="section-desc" data-i18n="cycle_desc">An intelligent, gamified platform turning city cleanup into a transparent community mission.</p>
+
+      <div class="cycle-grid">
+        <!-- Step 1 -->
+        <div class="cycle-card">
+          <div class="step-num">1</div>
+          <div class="cycle-icon"><i class="fas fa-camera"></i></div>
+          <h3 class="cycle-title" data-i18n="step1_title">1. Report Pollution</h3>
+          <p class="cycle-text" data-i18n="step1_desc">Citizens discover polluted areas in Sulaymaniyah, take a photo through the app, and select their neighbourhood location.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="cycle-card">
+          <div class="step-num">2</div>
+          <div class="cycle-icon"><i class="fas fa-microchip"></i></div>
+          <h3 class="cycle-title" data-i18n="step2_title">2. AI YOLOv8 Analysis</h3>
+          <p class="cycle-text" data-i18n="step2_desc">The system automatically scans the photo, detects waste items, estimates quantity, and assigns a pollution score from Level 1 to 5.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="cycle-card">
+          <div class="step-num">3</div>
+          <div class="cycle-icon"><i class="fas fa-hands-helping"></i></div>
+          <h3 class="cycle-title" data-i18n="step3_title">3. Volunteer & Clean</h3>
+          <p class="cycle-text" data-i18n="step3_desc">Citizens volunteer to clean a reported spot. The app gives randomized verification instructions to follow during recording.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="cycle-card">
+          <div class="step-num">4</div>
+          <div class="cycle-icon"><i class="fas fa-user-shield"></i></div>
+          <h3 class="cycle-title" data-i18n="step4_title">4. Multi-Verification</h3>
+          <p class="cycle-text" data-i18n="step4_desc">Robust checks verify location, camera frames, QR information, before/after image comparison, and AI waste reduction.</p>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="cycle-card">
+          <div class="step-num">5</div>
+          <div class="cycle-icon"><i class="fas fa-award"></i></div>
+          <h3 class="cycle-title" data-i18n="step5_title">5. Points & Rewards</h3>
+          <p class="cycle-text" data-i18n="step5_desc">Verified cleanups earn points instantly. Anti-fraud rules keep points pending until fully validated.</p>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="cycle-card">
+          <div class="step-num">6</div>
+          <div class="cycle-icon"><i class="fas fa-trophy"></i></div>
+          <h3 class="cycle-title" data-i18n="step6_title">6. Eco-League Competition</h3>
+          <p class="cycle-text" data-i18n="step6_desc">Neighbourhoods in Sulaymaniyah compete on leaderboard rankings based on resident contributions!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== AI INTERACTIVE VERIFICATION DEMO ==================== -->
+  <section class="ai-section" id="ai-verification">
+    <div class="container">
+      <div style="text-align: center;">
+        <div class="section-tag" data-i18n="ai_tag">YOLOv8 Computer Vision</div>
+        <h2 class="section-title" data-i18n="ai_title">Smart AI Waste Detection & <span>Anti-Fraud System</span></h2>
+        <p class="section-desc" data-i18n="ai_desc">Our custom YOLOv8 model evaluates waste severity in real-time while strict verification prevents duplicate, fake, or abusive reports.</p>
+      </div>
+
+      <div class="ai-interactive-card">
+        <div class="ai-demo-preview">
+          <img src="assets/images/ai_yolo_demo.png" alt="AI YOLOv8 Waste Detection Scanner" class="ai-demo-img" />
+          <div class="ai-scanner-overlay"></div>
+          <div class="ai-scan-box" id="aiScanBox">
+            <div class="scan-tag"><i class="fas fa-bolt"></i> YOLOv8: Litter Conf. 96%</div>
+          </div>
+        </div>
+
+        <div class="ai-controls-content">
+          <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary-green); font-weight: 700; margin-bottom: 0.5rem;">
+            <i class="fas fa-check-double"></i> <span data-i18n="ai_verified">AI Multi-Verification Active</span>
+          </div>
+
+          <h3 id="aiLevelText" style="font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem;" data-i18n="ai_level">
+            Pollution Level: 4 / 5 (Severe Litter)
+          </h3>
+
+          <p id="aiPtsText" style="font-size: 1.1rem; color: var(--accent-teal); font-weight: 700;" data-i18n="ai_pts">
+            Clean Reward: 150 Eco-Points
+          </p>
+
+          <div class="severity-meter">
+            <div class="meter-header">
+              <span>Severity Scale</span>
+            </div>
+            <div class="meter-bar">
+              <div class="meter-fill" id="aiMeterFill"></div>
+            </div>
+          </div>
+
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Interactive Sample Preview (Select location to simulate AI scanning):
+          </p>
+
+          <div class="sample-selector">
+            <button class="sample-chip active" onclick="selectAiSample('park')" data-i18n="sample_park">Sarchinar Park Spot</button>
+            <button class="sample-chip" onclick="selectAiSample('street')" data-i18n="sample_street">Saholaka Street Spot</button>
+            <button class="sample-chip" onclick="selectAiSample('mountain')" data-i18n="sample_mountain">Goizha Mountain Spot</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BEFORE & AFTER SHOWCASE ==================== -->
+  <section class="before-after-section" id="evidence">
+    <div class="container text-center" style="text-align: center;">
+      <div class="section-tag" data-i18n="before_after_tag">Real Impact</div>
+      <h2 class="section-title" data-i18n="before_after_title">Before & After <span>Cleanup Evidence</span></h2>
+      <p class="section-desc" data-i18n="before_after_desc">Every cleanup attempt is stored with AI image comparison, timestamped geolocation, and photo proof for complete transparency.</p>
+
+      <div class="slider-container">
+        <div class="slider-img-wrapper">
+          <img src="assets/images/before_after_cleanup.png" alt="Before and After Cleanup Comparison in Sarchinar" class="slider-img" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ECO-LEAGUE LEADERBOARD ==================== -->
+  <section class="league-section" id="eco-league">
+    <div class="container">
+      <div style="text-align: center;">
+        <div class="section-tag" data-i18n="league_tag">Community Gamification</div>
+        <h2 class="section-title" data-i18n="league_title">Eco-League: <span>Neighbourhood Competition</span></h2>
+        <p class="section-desc" data-i18n="league_desc">Transforming city cleanliness into friendly rivalry among Sulaymaniyah's districts.</p>
+      </div>
+
+      <div class="league-grid">
+        <!-- Top Districts -->
+        <div class="leaderboard-card">
+          <div class="leaderboard-header">
+            <div class="leaderboard-title" data-i18n="top_districts"><i class="fas fa-city" style="color: var(--primary-green);"></i> Top Sulaymaniyah Neighbourhoods</div>
+            <span class="badge-tag" style="font-size: 0.8rem; background: rgba(0,200,83,0.15); color: var(--primary-green); padding: 0.2rem 0.6rem; border-radius: 20px; font-weight:700;">Season 2026</span>
+          </div>
+
+          <ul class="rank-list">
+            <li class="rank-item">
+              <div class="rank-left">
+                <div class="rank-num rank-1">1</div>
+                <div class="rank-name">Sarchinar (سەرچنار)</div>
+              </div>
+              <div class="rank-pts">14,250 Pts</div>
+            </li>
+            <li class="rank-item">
+              <div class="rank-left">
+                <div class="rank-num rank-2">2</div>
+                <div class="rank-name">Saholaka / Salim St (سەهۆڵەکە)</div>
+              </div>
+              <div class="rank-pts">12,800 Pts</div>
+            </li>
+            <li class="rank-item">
+              <div class="rank-left">
+                <div class="rank-num rank-3">3</div>
+                <div class="rank-name">Bakrajo (بەکراجهۆ)</div>
+              </div>
+              <div class="rank-pts">10,450 Pts</div>
+            </li>
+            <li class="rank-item">
+              <div class="rank-left">
+                <div class="rank-num rank-other">4</div>
+                <div class="rank-name">Raparin (ڕاپەڕین)</div>
+              </div>
+              <div class="rank-pts">8,900 Pts</div>
+            </li>
+            <li class="rank-item">
+              <div class="rank-left">
+                <div class="rank-num rank-other">5</div>
+                <div class="rank-name">Toy Malik (تۆی مەلیک)</div>
+              </div>
+              <div class="rank-pts">7,650 Pts</div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Top Citizens -->
+        <div class="leaderboard-card">
+          <div class="leaderboard-header">
+            <div class="leaderboard-title" data-i18n="top_citizens"><i class="fas fa-medal" style="color: var(--accent-teal);"></i> Top Contributing Citizens</div>
+            <span class="badge-tag" style="font-size: 0.8rem; background: rgba(0,191,165,0.15); color: var(--accent-teal); padding: 0.2rem 0.6rem; border-radius: 20px; font-weight:700;">Top Eco-Heroes</span>
+          </div>
+
+          <ul class="rank-list">
+            <li class="rank-item">
+              <div class="rank-left">
+                <div class="rank-num rank-1">1</div>
+                <div class="rank-name">Ari Mohammed (Sarchinar)</div>
+              </div>
+              <div class="rank-pts">2,450 Pts</div>
+            </li>
+            <li class="rank-item">
+              <div class="rank-left">
+                <div class="rank-num rank-2">2</div>
+                <div class="rank-name">Sardasht K. (Saholaka)</div>
+              </div>
+              <div class="rank-pts">2,100 Pts</div>
+            </li>
+            <li class="rank-item">
+              <div class="rank-left">
+                <div class="rank-num rank-3">3</div>
+                <div class="rank-name">Lanja Ahmed (Bakrajo)</div>
+              </div>
+              <div class="rank-pts">1,950 Pts</div>
+            </li>
+            <li class="rank-item">
+              <div class="rank-left">
+                <div class="rank-num rank-other">4</div>
+                <div class="rank-name">Diyar Hassan (Azadi)</div>
+              </div>
+              <div class="rank-pts">1,620 Pts</div>
+            </li>
+            <li class="rank-item">
+              <div class="rank-left">
+                <div class="rank-num rank-other">5</div>
+                <div class="rank-name">Shanya Omar (Raparin)</div>
+              </div>
+              <div class="rank-pts">1,400 Pts</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MUNICIPALITY DASHBOARD SECTION ==================== -->
+  <section class="dashboard-section" id="municipality">
+    <div class="container">
+      <div style="text-align: center;">
+        <div class="section-tag" data-i18n="dash_tag">Enterprise Platform</div>
+        <h2 class="section-title" data-i18n="dash_title">Slemani Municipality <span>Dashboard</span></h2>
+        <p class="section-desc" data-i18n="dash_desc">Empowering city officials with real-time maps, pollution age indicators, evidence reviews, and environmental statistics.</p>
+      </div>
+
+      <div class="dash-showcase">
+        <div class="dash-img-container">
+          <img src="assets/images/municipality_dash.png" alt="Sulaymaniyah Municipality Control Dashboard Interface" class="dash-img" />
+        </div>
+
+        <div class="dash-features-grid">
+          <div class="dash-feat-item">
+            <div class="dash-feat-icon"><i class="fas fa-map-marked-alt"></i></div>
+            <div>
+              <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 0.3rem;" data-i18n="dash_feat1_title">Live City Heatmap</h4>
+              <p style="font-size: 0.88rem; color: var(--text-muted);" data-i18n="dash_feat1_desc">Monitor reported spots by severity (Level 1-5) and age across all city sectors.</p>
+            </div>
+          </div>
+
+          <div class="dash-feat-item">
+            <div class="dash-feat-icon"><i class="fas fa-tasks"></i></div>
+            <div>
+              <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 0.3rem;" data-i18n="dash_feat2_title">Evidence Inspection</h4>
+              <p style="font-size: 0.88rem; color: var(--text-muted);" data-i18n="dash_feat2_desc">Compare before-and-after photo frames and review suspicious cleanup submissions.</p>
+            </div>
+          </div>
+
+          <div class="dash-feat-item">
+            <div class="dash-feat-icon"><i class="fas fa-chart-line"></i></div>
+            <div>
+              <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 0.3rem;" data-i18n="dash_feat3_title">Impact Analytics</h4>
+              <p style="font-size: 0.88rem; color: var(--text-muted);" data-i18n="dash_feat3_desc">Track total reported locations, verified cleanups, and tons of waste removed.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DOWNLOAD & PRESENTATION CTA ==================== -->
+  <section class="cta-banner" id="download-section">
+    <div class="container">
+      <div class="cta-banner-content">
+        <h2 data-i18n="cta_title">Ready to Transform Slemani?</h2>
+        <p data-i18n="cta_desc">Our application will be available soon on iOS and Android!</p>
+
+        <div class="download-btn-group">
+          <a href="#" onclick="showDownloadToast(); return false;" class="download-btn">
+            <i class="fab fa-apple"></i>
+            <div class="download-text">
+              <span class="small" data-i18n="btn_ios_sub">App Store</span>
+              <span class="big" data-i18n="btn_download_ios">Download for iPhone</span>
+            </div>
+          </a>
+
+          <a href="#" onclick="showDownloadToast(); return false;" class="download-btn">
+            <i class="fab fa-google-play"></i>
+            <div class="download-text">
+              <span class="small" data-i18n="btn_android_sub">Google Play</span>
+              <span class="big" data-i18n="btn_download_android">Download for Android</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-logo">
+          <div class="brand-icon" style="width: 36px; height: 36px; font-size: 1rem;"><i class="fas fa-leaf"></i></div>
+          <span data-i18n="brand_name">GreenLegacy <span>Slemani</span></span>
+        </div>
+
+        <div style="display: flex; gap: 1rem;">
+          <button class="lang-btn" onclick="toggleLanguage()">
+            <i class="fas fa-globe"></i> English / کوردی
+          </button>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 GreenLegacy Slemani. All rights reserved.</p>
+        <p>Smart Environmental Protection & Municipal Management Platform.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Custom Logic JS -->
+  <script src="script.js"></script>
+</body>
+</html>
