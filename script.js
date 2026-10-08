@@ -309,6 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          showcaseVideo.currentTime = 0; // Restart video from beginning when scrolled into view
           videoSection.classList.add('is-active');
           const playPromise = showcaseVideo.play();
           if (playPromise !== undefined) {
@@ -321,6 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           videoSection.classList.remove('is-active');
           showcaseVideo.pause();
+          showcaseVideo.currentTime = 0; // Reset position when scrolling away
           if (videoPlayIcon) videoPlayIcon.className = 'fas fa-play';
         }
       });
