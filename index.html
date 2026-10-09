@@ -28,10 +28,17 @@
         <li><a href="#cycle" class="nav-link" data-i18n="nav_cycle">How It Works</a></li>
         <li><a href="#ai-verification" class="nav-link" data-i18n="nav_ai">AI Verification</a></li>
         <li><a href="#eco-league" class="nav-link" data-i18n="nav_league">Eco-League</a></li>
+        <li><a href="#role-portals" class="nav-link" data-i18n="nav_portals">Role Portals</a></li>
         <li><a href="#municipality" class="nav-link" data-i18n="nav_dashboard">Municipality</a></li>
       </ul>
 
       <div class="nav-controls">
+        <!-- Account Role Switcher Badge -->
+        <button class="role-selector-btn" onclick="openRoleModal()" id="roleBadgeBtn" title="Switch Account Role">
+          <i class="fas fa-user-circle"></i>
+          <span id="currentRoleLabel">Business</span>
+        </button>
+
         <!-- Language Switcher (EN <-> کوردی) -->
         <button class="lang-btn" onclick="toggleLanguage()" id="langBtn" title="Switch Language">
           <i class="fas fa-globe"></i>
@@ -42,9 +49,6 @@
         <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Theme">
           <i class="fas fa-moon" id="themeIcon"></i>
         </button>
-
-        <!-- Direct Download Nav CTA -->
-        
       </div>
     </div>
   </nav>
@@ -372,6 +376,451 @@
     </div>
   </section>
 
+  <!-- ==================== FOUR-ROLE ECOSYSTEM PORTALS ==================== -->
+  <section class="role-portals-section" id="role-portals">
+    <div class="container">
+      <div style="text-align: center;">
+        <div class="section-tag" data-i18n="portals_tag">Unified Smart Eco-System</div>
+        <h2 class="section-title" data-i18n="portals_title">GreenLegacy <span>Four-Role Portals</span></h2>
+        <p class="section-desc" data-i18n="portals_desc">Connecting Citizens, Businesses, Recycling Companies, and Municipality Staff in a unified waste management platform.</p>
+      </div>
+
+      <!-- Role Switcher Tab Bar -->
+      <div class="role-switcher-bar">
+        <button class="role-tab-btn" id="tab-citizen" onclick="openRoleTab('citizen')">
+          <i class="fas fa-user"></i> <span data-i18n="role_citizen">Citizen</span>
+        </button>
+        <button class="role-tab-btn active" id="tab-business" onclick="openRoleTab('business')">
+          <i class="fas fa-store"></i> <span data-i18n="role_business">Business</span>
+        </button>
+        <button class="role-tab-btn" id="tab-recycler" onclick="openRoleTab('recycler')">
+          <i class="fas fa-truck-loading"></i> <span data-i18n="role_recycler">Recycler</span>
+        </button>
+        <button class="role-tab-btn" id="tab-municipality" onclick="openRoleTab('municipality')">
+          <i class="fas fa-city"></i> <span data-i18n="role_municipality">Municipality Staff</span>
+        </button>
+      </div>
+
+      <!-- ==================== ROLE PANEL 1: CITIZEN ==================== -->
+      <div class="role-panel" id="panel-citizen">
+        <div class="dash-metrics-grid">
+          <div class="metric-card">
+            <div class="metric-icon"><i class="fas fa-coins"></i></div>
+            <div class="metric-info">
+              <span class="metric-val" id="citMetricPoints">450 Pts</span>
+              <span class="metric-lbl" data-i18n="cit_lbl_pts">Citizen Eco-Points</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon teal"><i class="fas fa-broom"></i></div>
+            <div class="metric-info">
+              <span class="metric-val" id="citMetricCleanups">3</span>
+              <span class="metric-lbl" data-i18n="cit_lbl_cleanups">Cleanups Verified</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon orange"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="metric-info">
+              <span class="metric-val">Sarchinar</span>
+              <span class="metric-lbl" data-i18n="cit_lbl_district">Home District</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon purple"><i class="fas fa-trophy"></i></div>
+            <div class="metric-info">
+              <span class="metric-val">#1</span>
+              <span class="metric-lbl" data-i18n="cit_lbl_rank">District League Rank</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-action-bar">
+          <div class="dash-title-group">
+            <i class="fas fa-camera" style="color: var(--primary-green); font-size: 1.5rem;"></i>
+            <h3 data-i18n="cit_title_reports">Citizen Pollution Reports & Cleanups</h3>
+          </div>
+          <button class="btn btn-primary" onclick="alert('Simulation: Click any AI sample in the AI Verification section above to simulate a citizen report!')">
+            <i class="fas fa-plus"></i> <span data-i18n="btn_report_spot">Report Pollution Spot</span>
+          </button>
+        </div>
+
+        <div class="data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Report ID</th>
+                <th>Location</th>
+                <th>District</th>
+                <th>YOLOv8 Severity</th>
+                <th>Status</th>
+                <th>Earned Points</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>CLN-501</strong></td>
+                <td>Sarchinar Park Spot</td>
+                <td>Sarchinar</td>
+                <td><span class="status-pill status-flagged">Level 4 (Severe)</span></td>
+                <td><span class="status-pill status-collected">Approved</span></td>
+                <td><strong>+150 Pts</strong></td>
+              </tr>
+              <tr>
+                <td><strong>CLN-502</strong></td>
+                <td>Saholaka Corner</td>
+                <td>Saholaka</td>
+                <td><span class="status-pill status-requested">Level 3 (Moderate)</span></td>
+                <td><span class="status-pill status-requested">Pending (24h Review)</span></td>
+                <td><strong>100 Pts (Pending)</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ==================== ROLE PANEL 2: BUSINESS ==================== -->
+      <div class="role-panel active" id="panel-business">
+        <div class="dash-metrics-grid">
+          <div class="metric-card">
+            <div class="metric-icon"><i class="fas fa-trash-alt"></i></div>
+            <div class="metric-info">
+              <span class="metric-val" id="bizMetricBins">0</span>
+              <span class="metric-lbl" data-i18n="biz_lbl_registered">Registered Bins</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon orange"><i class="fas fa-exclamation-triangle"></i></div>
+            <div class="metric-info">
+              <span class="metric-val" id="bizMetricOpenReq">0</span>
+              <span class="metric-lbl" data-i18n="biz_lbl_open_req">Full Bin Requests</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon teal"><i class="fas fa-weight-hanging"></i></div>
+            <div class="metric-info">
+              <span class="metric-val" id="bizMetricWeight">0 kg</span>
+              <span class="metric-lbl" data-i18n="biz_lbl_verified_weight">Verified Weight Collected</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon purple"><i class="fas fa-coins"></i></div>
+            <div class="metric-info">
+              <span class="metric-val" id="bizMetricPoints">0 Pts</span>
+              <span class="metric-lbl" data-i18n="biz_lbl_recycling_pts">Recycling Points Earned</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-action-bar">
+          <div class="dash-title-group">
+            <i class="fas fa-store" style="color: var(--primary-green); font-size: 1.5rem;"></i>
+            <h3 data-i18n="biz_title_bins">Business Recycling Bins</h3>
+          </div>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <button class="btn btn-secondary" onclick="openReportFullModal()">
+              <i class="fas fa-bell"></i> <span data-i18n="btn_report_full">Report Bin Full</span>
+            </button>
+            <button class="btn btn-primary" onclick="openRegisterBinModal()">
+              <i class="fas fa-plus-circle"></i> <span data-i18n="btn_register_bin">Register New Bin</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Bins Cards Grid -->
+        <div class="bins-grid" id="bizBinsGrid">
+          <!-- Dynamically Rendered Bins -->
+        </div>
+
+        <!-- Collection Request History -->
+        <div class="dash-title-group" style="margin-bottom: 1rem; margin-top: 2.5rem;">
+          <i class="fas fa-history" style="color: var(--accent-teal); font-size: 1.3rem;"></i>
+          <h3 data-i18n="biz_title_history">Collection Requests & Weight History</h3>
+        </div>
+
+        <div class="data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Request ID</th>
+                <th>Bin QR</th>
+                <th>Material</th>
+                <th>AI Items</th>
+                <th>Status</th>
+                <th>Assigned Recycler</th>
+                <th>Verified Weight</th>
+                <th>Earned Points</th>
+                <th>Requested At</th>
+              </tr>
+            </thead>
+            <tbody id="bizRequestsTableBody">
+              <!-- Dynamically Rendered History -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ==================== ROLE PANEL 3: RECYCLER ==================== -->
+      <div class="role-panel" id="panel-recycler">
+        <div class="dash-metrics-grid">
+          <div class="metric-card">
+            <div class="metric-icon orange"><i class="fas fa-map-pin"></i></div>
+            <div class="metric-info">
+              <span class="metric-val" id="recMetricAvailable">0</span>
+              <span class="metric-lbl" data-i18n="rec_lbl_available">Available Requests</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon"><i class="fas fa-tasks"></i></div>
+            <div class="metric-info">
+              <span class="metric-val" id="recMetricAccepted">0</span>
+              <span class="metric-lbl" data-i18n="rec_lbl_accepted">Accepted Requests</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon teal"><i class="fas fa-truck-loading"></i></div>
+            <div class="metric-info">
+              <span class="metric-val" id="recMetricWeight">0 kg</span>
+              <span class="metric-lbl" data-i18n="rec_lbl_collected_today">Weight Collected</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon purple"><i class="fas fa-star"></i></div>
+            <div class="metric-info">
+              <span class="metric-val">4.9 ★</span>
+              <span class="metric-lbl" data-i18n="rec_lbl_rating">Collector Rating</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="recycler-grid">
+          <!-- Left: Available Requests Map & Cards -->
+          <div class="interactive-map-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <h4 style="font-size: 1.1rem; font-weight: 800;"><i class="fas fa-map" style="color: var(--primary-green);"></i> Slemani Collection Heatmap</h4>
+              <div style="display: flex; gap: 0.5rem;">
+                <select class="form-select" id="recFilterMaterial" onchange="renderRecyclerPortal()" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;">
+                  <option value="all">All Materials</option>
+                  <option value="plastic">Plastic</option>
+                  <option value="cardboard">Cardboard</option>
+                  <option value="metal">Metal</option>
+                  <option value="mixed">Mixed</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="map-view-box" id="recyclerMapView">
+              <div class="map-grid-overlay"></div>
+              <!-- Interactive Pins rendered via JS -->
+            </div>
+
+            <div style="margin-top: 1.5rem;">
+              <h4 style="font-size: 1rem; font-weight: 800; margin-bottom: 0.75rem;"><i class="fas fa-list"></i> Collection Queue</h4>
+              <div id="recyclerRequestsList" style="display: flex; flex-direction: column; gap: 0.85rem; max-height: 280px; overflow-y: auto;">
+                <!-- Dynamically rendered -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Collection Verification Terminal -->
+          <div class="verification-card">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+              <h4 style="font-size: 1.15rem; font-weight: 800;"><i class="fas fa-qrcode" style="color: var(--accent-teal);"></i> Collection Verification Terminal</h4>
+              <span class="status-pill status-accepted" id="terminalStatusBadge">Select Request</span>
+            </div>
+
+            <div class="step-indicator-bar">
+              <div class="step-chip active" id="stepChip1">1. Accept</div>
+              <div class="step-chip" id="stepChip2">2. QR Scan</div>
+              <div class="step-chip" id="stepChip3">3. GPS (50m)</div>
+              <div class="step-chip" id="stepChip4">4. Weight (kg)</div>
+            </div>
+
+            <div id="terminalBody" style="background: var(--bg-main); padding: 1.25rem; border-radius: 14px; border: 1px solid var(--card-border);">
+              <p style="color: var(--text-muted); font-size: 0.9rem; text-align: center; padding: 2rem 0;" id="terminalPlaceholder">
+                Please select an accepted request from the list or map to verify and complete collection.
+              </p>
+
+              <form id="verificationForm" style="display: none;" onsubmit="handleCompleteCollection(event)">
+                <input type="hidden" id="verifRequestId" />
+
+                <div style="margin-bottom: 1rem; background: var(--card-bg); padding: 0.85rem; border-radius: 10px; border: 1px solid var(--card-border);">
+                  <div style="font-size: 0.85rem; color: var(--text-muted);">Selected Request:</div>
+                  <strong id="verifBinIdText" style="font-family: monospace; font-size: 1rem; color: var(--primary-green);">GL-BIN-0001</strong>
+                  <div id="verifBizNameText" style="font-weight: 700; font-size: 0.95rem;">Saholaka Eco Cafe</div>
+                  <div id="verifLocText" style="font-size: 0.85rem; color: var(--text-muted);">Saholaka St - Gate A</div>
+                </div>
+
+                <div class="form-group">
+                  <label><i class="fas fa-qrcode"></i> Step 1: Scan Bin QR Code</label>
+                  <div style="display: flex; gap: 0.5rem;">
+                    <input type="text" id="scanQrInput" class="form-control" placeholder="Scan or enter QR e.g. GL-BIN-0001" required />
+                    <button type="button" class="btn btn-secondary" onclick="autoFillScanQr()" style="white-space: nowrap;">Auto Scan</button>
+                  </div>
+                  <small style="color: var(--text-muted); font-size: 0.78rem;">Must match the registered bin QR code exactly.</small>
+                </div>
+
+                <div class="form-group">
+                  <label><i class="fas fa-location-arrow"></i> Step 2: GPS Proximity Check (&le; 50m)</label>
+                  <div style="display: flex; align-items: center; justify-content: space-between; background: var(--card-bg); padding: 0.75rem; border-radius: 10px; border: 1px solid var(--card-border);">
+                    <span id="gpsStatusText" style="font-weight: 700; font-size: 0.88rem; color: var(--accent-teal);">Radius Check Pending</span>
+                    <button type="button" class="btn btn-secondary" onclick="simulateGpsCheck()" style="padding: 0.35rem 0.75rem; font-size: 0.8rem;">Verify GPS</button>
+                  </div>
+                  <input type="hidden" id="gpsVerifiedInput" value="false" />
+                </div>
+
+                <div class="form-group">
+                  <label><i class="fas fa-weight-hanging"></i> Step 3: Verified Collected Weight (kg)</label>
+                  <input type="number" step="0.1" min="0.1" id="verifiedWeightInput" class="form-control" placeholder="e.g. 45.5 kg" required />
+                  <small style="color: var(--text-muted); font-size: 0.78rem;">Points awarded = Weight (kg) &times; 10</small>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+                  <i class="fas fa-check-circle"></i> Complete Collection & Issue Points
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-title-group" style="margin-top: 2.5rem; margin-bottom: 1rem;">
+          <i class="fas fa-history" style="color: var(--primary-green); font-size: 1.3rem;"></i>
+          <h3 data-i18n="rec_title_history">Recycler Completed Collections History</h3>
+        </div>
+
+        <div class="data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Request ID</th>
+                <th>Bin QR</th>
+                <th>Business Name</th>
+                <th>District</th>
+                <th>Material</th>
+                <th>Verified Weight</th>
+                <th>Points Issued</th>
+                <th>Completed Timestamp</th>
+              </tr>
+            </thead>
+            <tbody id="recyclerHistoryTableBody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ==================== ROLE PANEL 4: MUNICIPALITY ==================== -->
+      <div class="role-panel" id="panel-municipality">
+        <div class="dash-metrics-grid">
+          <div class="metric-card">
+            <div class="metric-icon teal"><i class="fas fa-weight-hanging"></i></div>
+            <div class="metric-info">
+              <span class="metric-val" id="muniTotalWeight">0.0 Tons</span>
+              <span class="metric-lbl" data-i18n="muni_lbl_total_weight">Verified Recycling Weight</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon"><i class="fas fa-trash-alt"></i></div>
+            <div class="metric-info">
+              <span class="metric-val" id="muniTotalBins">0</span>
+              <span class="metric-lbl" data-i18n="muni_lbl_bins">Registered Recycling Bins</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon orange"><i class="fas fa-broom"></i></div>
+            <div class="metric-info">
+              <span class="metric-val" id="muniTotalCleanups">1,420+</span>
+              <span class="metric-lbl" data-i18n="muni_lbl_cleanups">Citizen Cleanups</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon purple"><i class="fas fa-shield-alt"></i></div>
+            <div class="metric-info">
+              <span class="metric-val" id="muniFlaggedCount">0</span>
+              <span class="metric-lbl" data-i18n="muni_lbl_flagged">Suspicious Submissions</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- District Weight Breakdown Table -->
+        <div class="dash-title-group" style="margin-bottom: 1rem;">
+          <i class="fas fa-chart-pie" style="color: var(--primary-green); font-size: 1.3rem;"></i>
+          <h3 data-i18n="muni_title_districts">Recycling Weight Collected by Sulaymaniyah District</h3>
+        </div>
+
+        <div class="data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>District Name</th>
+                <th>Registered Bins</th>
+                <th>Completed Collections</th>
+                <th>Verified Weight (kg)</th>
+                <th>Total Points Distributed</th>
+                <th>Environmental Status</th>
+              </tr>
+            </thead>
+            <tbody id="muniDistrictTableBody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Suspicious / Flagged Activity Review -->
+        <div class="dash-title-group" style="margin-top: 2rem; margin-bottom: 1rem;">
+          <i class="fas fa-exclamation-circle" style="color: #E91E63; font-size: 1.3rem;"></i>
+          <h3 data-i18n="muni_title_review">Administrative Review & Suspicious Weight Audit</h3>
+        </div>
+
+        <div class="data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Audit ID</th>
+                <th>Source Type</th>
+                <th>Entity / User</th>
+                <th>Submitted Weight</th>
+                <th>Flag Reason</th>
+                <th>Timestamp</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="muniFlaggedTableBody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ==================== UNIFIED POINT LEDGER ==================== -->
+      <div class="dash-title-group" style="margin-top: 3.5rem; margin-bottom: 1rem;">
+        <i class="fas fa-book-open" style="color: var(--primary-green); font-size: 1.4rem;"></i>
+        <h3 data-i18n="ledger_title">Unified GreenLegacy Point Ledger & Transaction Audit</h3>
+      </div>
+
+      <div class="data-table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Txn ID</th>
+              <th>Account Name</th>
+              <th>Role</th>
+              <th>Source Type</th>
+              <th>Reference ID</th>
+              <th>Weight (kg)</th>
+              <th>Points Awarded</th>
+              <th>Status</th>
+              <th>Timestamp</th>
+            </tr>
+          </thead>
+          <tbody id="unifiedLedgerTableBody">
+            <!-- Rendered via JS -->
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ==================== MUNICIPALITY DASHBOARD SECTION ==================== -->
   <section class="dashboard-section" id="municipality">
     <div class="container">
@@ -442,6 +891,213 @@
       </div>
     </div>
   </section>
+
+  <!-- ==================== MODAL 1: ACCOUNT ROLE SWITCHER ==================== -->
+  <div class="gl-modal-overlay" id="roleModalOverlay">
+    <div class="gl-modal">
+      <div class="gl-modal-header">
+        <h3><i class="fas fa-users-cog" style="color: var(--primary-green);"></i> Select Account Role</h3>
+        <button class="close-modal-btn" onclick="closeRoleModal()">&times;</button>
+      </div>
+      <div class="gl-modal-body">
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+          Select your account role to experience GreenLegacy Slemani's role-based dashboards and permissions.
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+          <button class="btn btn-secondary" onclick="switchRole('citizen')" style="justify-content: flex-start; padding: 1rem; border-radius: 14px;">
+            <i class="fas fa-user" style="color: var(--primary-green); font-size: 1.4rem;"></i>
+            <div style="text-align: left; margin-left: 0.5rem;">
+              <strong style="display: block; font-size: 1rem;">Citizen Account</strong>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Report pollution, volunteer cleanups, earn points & view rankings</span>
+            </div>
+          </button>
+
+          <button class="btn btn-secondary" onclick="switchRole('business')" style="justify-content: flex-start; padding: 1rem; border-radius: 14px;">
+            <i class="fas fa-store" style="color: var(--accent-teal); font-size: 1.4rem;"></i>
+            <div style="text-align: left; margin-left: 0.5rem;">
+              <strong style="display: block; font-size: 1rem;">Business / Shop Owner</strong>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Register recycling bins, request collections, track verified weight & points</span>
+            </div>
+          </button>
+
+          <button class="btn btn-secondary" onclick="switchRole('recycler')" style="justify-content: flex-start; padding: 1rem; border-radius: 14px;">
+            <i class="fas fa-truck-loading" style="color: #FF9800; font-size: 1.4rem;"></i>
+            <div style="text-align: left; margin-left: 0.5rem;">
+              <strong style="display: block; font-size: 1rem;">Recycling Collector Company</strong>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Accept requests, scan QR codes, verify 50m GPS radius & record weight</span>
+            </div>
+          </button>
+
+          <button class="btn btn-secondary" onclick="switchRole('municipality')" style="justify-content: flex-start; padding: 1rem; border-radius: 14px;">
+            <i class="fas fa-city" style="color: #9C27B0; font-size: 1.4rem;"></i>
+            <div style="text-align: left; margin-left: 0.5rem;">
+              <strong style="display: block; font-size: 1rem;">Slemani Municipality Staff</strong>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Monitor city heatmap, district stats, suspicious weight audits & approvals</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL 2: REGISTER NEW BIN ==================== -->
+  <div class="gl-modal-overlay" id="registerBinModalOverlay">
+    <div class="gl-modal">
+      <div class="gl-modal-header">
+        <h3><i class="fas fa-plus-circle" style="color: var(--primary-green);"></i> Register Recycling Bin</h3>
+        <button class="close-modal-btn" onclick="closeRegisterBinModal()">&times;</button>
+      </div>
+      <form id="registerBinForm" onsubmit="handleRegisterBin(event)">
+        <div class="gl-modal-body">
+          <div class="form-group">
+            <label>Business Owner / Shop Name</label>
+            <input type="text" id="binOwnerInput" class="form-control" value="Saholaka Eco Cafe" required />
+          </div>
+
+          <div class="form-group">
+            <label>Bin Location Name</label>
+            <input type="text" id="binLocationInput" class="form-control" placeholder="e.g. Salim Street Gate B" required />
+          </div>
+
+          <div class="form-group">
+            <label>Sulaymaniyah District</label>
+            <select id="binDistrictSelect" class="form-select">
+              <option value="Saholaka / Salim St">Saholaka / Salim St</option>
+              <option value="Sarchinar">Sarchinar</option>
+              <option value="Bakrajo">Bakrajo</option>
+              <option value="Raparin">Raparin</option>
+              <option value="Toy Malik">Toy Malik</option>
+              <option value="Goizha">Goizha</option>
+              <option value="Azadi">Azadi</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Recyclable Material Type</label>
+            <select id="binMaterialSelect" class="form-select">
+              <option value="plastic">Plastic (Bottles / Containers)</option>
+              <option value="cardboard">Cardboard & Paper</option>
+              <option value="metal">Metal & Cans</option>
+              <option value="mixed">Mixed Recyclables</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>GPS Coordinates</label>
+            <div style="display: flex; gap: 0.5rem;">
+              <input type="text" id="binLatInput" class="form-control" value="35.5571" placeholder="Lat" required />
+              <input type="text" id="binLngInput" class="form-control" value="45.4352" placeholder="Lng" required />
+            </div>
+            <small style="color: var(--text-muted); font-size: 0.78rem;">Used for 50m Recycler proximity verification during collection.</small>
+          </div>
+        </div>
+        <div class="gl-modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeRegisterBinModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Register & Generate QR</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL 3: REPORT BIN FULL ==================== -->
+  <div class="gl-modal-overlay" id="reportFullModalOverlay">
+    <div class="gl-modal">
+      <div class="gl-modal-header">
+        <h3><i class="fas fa-bell" style="color: #FF9800;"></i> Report Bin Full & Request Collection</h3>
+        <button class="close-modal-btn" onclick="closeReportFullModal()">&times;</button>
+      </div>
+      <form id="reportFullForm" onsubmit="handleReportFull(event)">
+        <div class="gl-modal-body">
+          <div class="form-group">
+            <label>Select Bin to Report Full</label>
+            <select id="reportBinSelect" class="form-select" required>
+              <!-- Populated dynamically -->
+            </select>
+            <small style="color: var(--text-muted); font-size: 0.78rem;">Note: Prevents duplicate open requests for the same bin.</small>
+          </div>
+
+          <div class="form-group">
+            <label>Bin Full Photo Proof</label>
+            <input type="file" class="form-control" accept="image/*" onchange="previewBinPhoto(event)" />
+            <div id="photoPreviewBox" style="margin-top: 0.75rem; border-radius: 12px; overflow: hidden; height: 140px; background: #0a0a0a; display: flex; align-items: center; justify-content: center;">
+              <img src="assets/images/ai_yolo_demo.png" alt="Bin Photo" id="binPhotoImg" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+          </div>
+
+          <div style="background: var(--bg-main); padding: 0.85rem; border-radius: 12px; border: 1px solid var(--card-border); margin-top: 1rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary-green); font-size: 0.85rem; font-weight: 700;">
+              <i class="fas fa-robot"></i> YOLOv8 AI Analysis Active
+            </div>
+            <div style="font-size: 0.9rem; font-weight: 700; margin-top: 0.25rem;">Detected Recyclable Items: <span id="reportAiCountText" style="color: var(--accent-teal);">42 Items (Plastic / Cans)</span></div>
+          </div>
+        </div>
+        <div class="gl-modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeReportFullModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL 4: QR CODE VIEWER ==================== -->
+  <div class="gl-modal-overlay" id="qrModalOverlay">
+    <div class="gl-modal" style="max-width: 420px; text-align: center;">
+      <div class="gl-modal-header">
+        <h3><i class="fas fa-qrcode" style="color: var(--primary-green);"></i> Bin QR Code</h3>
+        <button class="close-modal-btn" onclick="closeQrModal()">&times;</button>
+      </div>
+      <div class="gl-modal-body">
+        <h4 id="qrModalOwner" style="font-weight: 800; font-size: 1.1rem;">Saholaka Eco Cafe</h4>
+        <p id="qrModalLoc" style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Saholaka St - Gate A</p>
+
+        <div class="qr-code-box">
+          <!-- Scalable Vector Graphic QR Code Representation -->
+          <svg class="qr-code-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" fill="#FFFFFF"/>
+            <!-- Outer Markers -->
+            <rect x="10" y="10" width="25" height="25" fill="#121212"/>
+            <rect x="14" y="14" width="17" height="17" fill="#FFFFFF"/>
+            <rect x="18" y="18" width="9" height="9" fill="#157148"/>
+
+            <rect x="65" y="10" width="25" height="25" fill="#121212"/>
+            <rect x="69" y="14" width="17" height="17" fill="#FFFFFF"/>
+            <rect x="73" y="18" width="9" height="9" fill="#157148"/>
+
+            <rect x="10" y="65" width="25" height="25" fill="#121212"/>
+            <rect x="14" y="69" width="17" height="17" fill="#FFFFFF"/>
+            <rect x="18" y="73" width="9" height="9" fill="#157148"/>
+
+            <!-- Data Pattern -->
+            <rect x="42" y="10" width="8" height="8" fill="#121212"/>
+            <rect x="52" y="18" width="8" height="8" fill="#121212"/>
+            <rect x="42" y="28" width="8" height="8" fill="#157148"/>
+
+            <rect x="10" y="42" width="8" height="8" fill="#121212"/>
+            <rect x="25" y="42" width="8" height="8" fill="#157148"/>
+            <rect x="40" y="42" width="15" height="15" fill="#121212"/>
+            <rect x="60" y="42" width="8" height="8" fill="#121212"/>
+            <rect x="75" y="42" width="12" height="12" fill="#157148"/>
+
+            <rect x="42" y="65" width="8" height="8" fill="#121212"/>
+            <rect x="52" y="75" width="12" height="12" fill="#157148"/>
+            <rect x="70" y="70" width="18" height="18" fill="#121212"/>
+          </svg>
+
+          <div class="qr-code-text" id="qrModalText">GL-BIN-0001</div>
+        </div>
+
+        <p style="font-size: 0.8rem; color: var(--text-muted);">
+          Display or attach this QR code to the recycling bin. Recyclers scan this code during collection to verify identity.
+        </p>
+      </div>
+      <div class="gl-modal-footer" style="justify-content: center;">
+        <button type="button" class="btn btn-primary" onclick="alert('QR Code Ready for Print / Download!')">
+          <i class="fas fa-print"></i> Print QR Tag
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- ==================== FOOTER ==================== -->
   <footer>

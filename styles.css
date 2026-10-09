@@ -1138,3 +1138,578 @@ footer {
     text-align: center;
   }
 }
+
+/* ==========================================================================
+   Four Role Dashboard System & Recycling Expansion Styles
+   ========================================================================== */
+
+/* Role Selector Button in Navbar */
+.role-selector-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.9rem;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  background: var(--primary-green-glow);
+  color: var(--primary-green);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.role-selector-btn:hover {
+  background: var(--primary-green);
+  color: #ffffff;
+  border-color: var(--primary-green);
+}
+
+/* Role Portals Section */
+.role-portals-section {
+  padding: 80px 0;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--card-border);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.role-switcher-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.role-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.4rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.role-tab-btn:hover {
+  color: var(--primary-green);
+  border-color: var(--primary-green);
+  transform: translateY(-2px);
+}
+
+.role-tab-btn.active {
+  background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+  color: #ffffff;
+  border-color: var(--primary-green);
+  box-shadow: 0 8px 20px var(--primary-green-glow);
+}
+
+/* Role Panels */
+.role-panel {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.role-panel.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Metrics Cards Grid */
+.dash-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.metric-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary-green);
+  box-shadow: var(--shadow-md);
+}
+
+.metric-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--primary-green-glow);
+  color: var(--primary-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.metric-icon.teal {
+  background: var(--accent-teal-glow);
+  color: var(--accent-teal);
+}
+
+.metric-icon.orange {
+  background: rgba(255, 152, 0, 0.15);
+  color: #FF9800;
+}
+
+.metric-icon.purple {
+  background: rgba(156, 39, 176, 0.15);
+  color: #9C27B0;
+}
+
+.metric-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-val {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.metric-lbl {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Dashboard Action Bar */
+.dash-action-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.dash-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.dash-title-group h3 {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+/* Registered Bins Cards Grid */
+.bins-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.bin-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.bin-card:hover {
+  border-color: var(--primary-green);
+  transform: translateY(-3px);
+}
+
+.bin-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.bin-id-badge {
+  font-family: monospace;
+  font-weight: 800;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.6rem;
+  background: var(--bg-main);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  color: var(--primary-green);
+}
+
+.bin-material-pill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 50px;
+  text-transform: capitalize;
+}
+
+.mat-plastic { background: rgba(33, 150, 243, 0.15); color: #2196F3; }
+.mat-cardboard { background: rgba(121, 85, 72, 0.15); color: #795548; }
+.mat-metal { background: rgba(158, 158, 158, 0.2); color: #607D8B; }
+.mat-mixed { background: rgba(156, 39, 176, 0.15); color: #9C27B0; }
+
+.bin-card-body {
+  margin-bottom: 1rem;
+}
+
+.bin-location-name {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.bin-meta {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.bin-card-footer {
+  margin-top: auto;
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Status Pills */
+.status-pill {
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.25rem 0.7rem;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-transform: capitalize;
+}
+
+.status-normal { background: rgba(76, 175, 80, 0.15); color: #4CAF50; }
+.status-requested { background: rgba(255, 152, 0, 0.15); color: #FF9800; }
+.status-accepted { background: rgba(33, 150, 243, 0.15); color: #2196F3; }
+.status-collected { background: rgba(0, 200, 83, 0.18); color: var(--primary-green); }
+.status-rejected { background: rgba(244, 67, 54, 0.15); color: #F44336; }
+.status-flagged { background: rgba(233, 30, 99, 0.15); color: #E91E63; }
+
+/* Data Tables */
+.data-table-container {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  overflow-x: auto;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 2rem;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+[dir="rtl"] .data-table {
+  text-align: right;
+}
+
+.data-table th {
+  background: var(--bg-main);
+  padding: 1rem 1.25rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--card-border);
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--card-border);
+  color: var(--text-main);
+  vertical-align: middle;
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tr:hover {
+  background: var(--bg-main);
+}
+
+/* Recycler Map & Verification Scanner Layout */
+.recycler-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem;
+}
+
+@media (max-width: 992px) {
+  .recycler-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.interactive-map-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.map-view-box {
+  width: 100%;
+  height: 320px;
+  background: linear-gradient(140deg, #1d2b26 0%, #0d1714 100%);
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  margin-top: 1rem;
+}
+
+.map-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(0, 200, 83, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.map-pin {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: transform 0.25s ease;
+  transform: translate(-50%, -50%);
+}
+
+.map-pin:hover {
+  transform: translate(-50%, -50%) scale(1.25);
+  z-index: 10;
+}
+
+.map-pin-label {
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.85);
+  color: white;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* Recycler Scanner Card */
+.verification-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.step-indicator-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.step-chip {
+  flex: 1;
+  padding: 0.4rem 0.6rem;
+  background: var(--bg-main);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.step-chip.active {
+  background: var(--primary-green-glow);
+  color: var(--primary-green);
+  border-color: var(--primary-green);
+}
+
+.step-chip.completed {
+  background: rgba(0, 200, 83, 0.15);
+  color: var(--primary-green);
+}
+
+/* Modal System */
+.gl-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.gl-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.gl-modal {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 540px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transform: translateY(20px) scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gl-modal-overlay.active .gl-modal {
+  transform: translateY(0) scale(1);
+}
+
+.gl-modal-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gl-modal-header h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.close-modal-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-modal-btn:hover {
+  color: var(--primary-green);
+}
+
+.gl-modal-body {
+  padding: 1.5rem;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.gl-modal-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--card-border);
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  background: var(--bg-main);
+}
+
+/* Form Controls */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 700;
+  font-size: 0.88rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-main);
+}
+
+.form-control, .form-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  background: var(--bg-main);
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.form-control:focus, .form-select:focus {
+  outline: none;
+  border-color: var(--primary-green);
+}
+
+/* QR Rendering Box */
+.qr-code-box {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+  border: 2px dashed var(--primary-green);
+}
+
+.qr-code-svg {
+  width: 160px;
+  height: 160px;
+}
+
+.qr-code-text {
+  font-family: monospace;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #121212;
+  margin-top: 0.75rem;
+  letter-spacing: 1px;
+}
