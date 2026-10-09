@@ -127,18 +127,40 @@
     </div>
   </section>
 
-  <!-- ==================== VIDEO SHOWCASE SECTION ==================== -->
-  <section class="video-showcase-section" id="video-showcase">
-    <div class="video-full-wrapper">
-      <video id="showcaseVideo" muted playsinline loop autoplay preload="auto" class="showcase-video">
-        <source src="assets/Video/1008.mp4" type="video/mp4">
-        <source src="https://media.githubusercontent.com/media/Hamza-aa/GreenLegacy/main/assets/Video/1008.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <div class="video-overlay-controls">
-        <button class="video-play-btn" id="videoPlayBtn" title="Play/Pause Video">
-          <i class="fas fa-pause" id="videoPlayIcon"></i>
+  <!-- ==================== PHOTO SHOWCASE SLIDESHOW SECTION ==================== -->
+  <section class="photo-showcase-section" id="photo-showcase">
+    <div class="photo-showcase-wrapper">
+      <div class="photo-slides-container" id="photoSlidesContainer">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+      
+      <!-- Overlay Header Badge -->
+      <div class="photo-showcase-badge">
+        <i class="fas fa-camera"></i> <span data-i18n="photo_badge_title">Slemani Field Evidence Showcase</span>
+        <div class="photo-counter-tag" id="photoCounterTag">1 / 24</div>
+      </div>
+
+      <!-- Navigation Arrow Buttons -->
+      <button class="photo-nav-btn prev-btn" id="photoPrevBtn" title="Previous Photo" onclick="prevSlide()">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="photo-nav-btn next-btn" id="photoNextBtn" title="Next Photo" onclick="nextSlide()">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+
+      <!-- Bottom Controls Bar -->
+      <div class="photo-controls-bar">
+        <button class="photo-play-btn" id="photoPlayPauseBtn" title="Pause/Play Slideshow" onclick="toggleSlideshowPlay()">
+          <i class="fas fa-pause" id="photoPlayIcon"></i>
         </button>
+        <div class="photo-dots-wrapper" id="photoDotsWrapper">
+          <!-- Dots rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- Slide Auto Progress Bar -->
+      <div class="slide-progress-bar">
+        <div class="slide-progress-fill" id="slideProgressFill"></div>
       </div>
     </div>
   </section>

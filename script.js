@@ -135,7 +135,8 @@ const translations = {
     cit_title_reports: "Citizen Pollution Reports & Cleanups",
     btn_report_spot: "Report Pollution Spot",
 
-    ledger_title: "Unified GreenLegacy Point Ledger & Transaction Audit"
+    ledger_title: "Unified GreenLegacy Point Ledger & Transaction Audit",
+    photo_badge_title: "Slemani Field Evidence Showcase"
   },
 
   ckb: {
@@ -262,7 +263,8 @@ const translations = {
     cit_title_reports: "ڕاپۆرت و پاککردنەوەکانی هاووڵاتی",
     btn_report_spot: "ڕاپۆرتکردنی شوێنی پیس",
 
-    ledger_title: "تۆماری گشتی خاڵەکان و وردبینی مامەڵەکان"
+    ledger_title: "تۆماری گشتی خاڵەکان و وردبینی مامەڵەکان",
+    photo_badge_title: "بەڵگەی مەیدانی سلێمانی"
   }
 };
 
@@ -1098,71 +1100,152 @@ function renderUnifiedLedger() {
 }
 
 /* ==========================================================================
+   Photo Showcase Slideshow Controller (24 Converted Field Evidence Photos)
+   ========================================================================== */
+
+const showcasePhotos = [
+  'assets/example_photos/img_9711.jpg',
+  'assets/example_photos/img_9712.jpg',
+  'assets/example_photos/img_9713.jpg',
+  'assets/example_photos/img_9714.jpg',
+  'assets/example_photos/img_9715.jpg',
+  'assets/example_photos/img_9717.jpg',
+  'assets/example_photos/img_9718.jpg',
+  'assets/example_photos/img_9720.jpg',
+  'assets/example_photos/img_9721.jpg',
+  'assets/example_photos/img_9723.jpg',
+  'assets/example_photos/img_9724.jpg',
+  'assets/example_photos/img_9727.jpg',
+  'assets/example_photos/img_9728.jpg',
+  'assets/example_photos/img_9729.jpg',
+  'assets/example_photos/img_9730.jpg',
+  'assets/example_photos/img_9731.jpg',
+  'assets/example_photos/img_9732.jpg',
+  'assets/example_photos/img_9733.jpg',
+  'assets/example_photos/img_9734.jpg',
+  'assets/example_photos/img_9736.jpg',
+  'assets/example_photos/img_9738.jpg',
+  'assets/example_photos/img_9740.jpg',
+  'assets/example_photos/img_9742.jpg',
+  'assets/example_photos/whatsapp_image_2026-10-09_at_11.17.57.jpg'
+];
+
+let currentSlideIndex = 0;
+let isSlideshowPlaying = true;
+let slideTimer = null;
+let slideProgressInterval = null;
+let progressVal = 0;
+const SLIDE_DURATION_MS = 3500;
+
+function initPhotoSlideshow() {
+  const container = document.getElementById('photoSlidesContainer');
+  const dotsWrapper = document.getElementById('photoDotsWrapper');
+
+  if (!container) return;
+
+  container.innerHTML = showcasePhotos.map((src, i) => `
+    <div class="showcase-slide ${i === 0 ? 'active' : ''}" id="slide-${i}">
+      <img src="${src}" alt="Slemani Field Evidence Photo ${i + 1}" class="showcase-slide-img" />
+    </div>
+  `).join('');
+
+  if (dotsWrapper) {
+    dotsWrapper.innerHTML = showcasePhotos.map((_, i) => `
+      <div class="photo-dot ${i === 0 ? 'active' : ''}" id="dot-${i}" onclick="goToSlide(${i})" title="Photo ${i + 1}"></div>
+    `).join('');
+  }
+
+  updateCounterTag();
+  startSlideshowTimer();
+}
+
+function goToSlide(index) {
+  const total = showcasePhotos.length;
+  currentSlideIndex = (index + total) % total;
+
+  document.querySelectorAll('.showcase-slide').forEach((slide, i) => {
+    slide.classList.toggle('active', i === currentSlideIndex);
+  });
+
+  document.querySelectorAll('.photo-dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i === currentSlideIndex);
+  });
+
+  const activeDot = document.getElementById(`dot-${currentSlideIndex}`);
+  if (activeDot && activeDot.parentElement) {
+    activeDot.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+
+  updateCounterTag();
+
+  if (isSlideshowPlaying) {
+    resetSlideshowTimer();
+  }
+}
+
+function nextSlide() {
+  goToSlide(currentSlideIndex + 1);
+}
+
+function prevSlide() {
+  goToSlide(currentSlideIndex - 1);
+}
+
+function updateCounterTag() {
+  const counterTag = document.getElementById('photoCounterTag');
+  if (counterTag) {
+    counterTag.textContent = `${currentSlideIndex + 1} / ${showcasePhotos.length}`;
+  }
+}
+
+function toggleSlideshowPlay() {
+  isSlideshowPlaying = !isSlideshowPlaying;
+  const playIcon = document.getElementById('photoPlayIcon');
+
+  if (isSlideshowPlaying) {
+    if (playIcon) playIcon.className = 'fas fa-pause';
+    startSlideshowTimer();
+    showNotification('Slideshow auto-playback resumed');
+  } else {
+    if (playIcon) playIcon.className = 'fas fa-play';
+    stopSlideshowTimer();
+    showNotification('Slideshow paused');
+  }
+}
+
+function startSlideshowTimer() {
+  stopSlideshowTimer();
+  progressVal = 0;
+  const progressFill = document.getElementById('slideProgressFill');
+
+  const stepMs = 50;
+  slideProgressInterval = setInterval(() => {
+    progressVal += (stepMs / SLIDE_DURATION_MS) * 100;
+    if (progressFill) progressFill.style.width = `${Math.min(100, progressVal)}%`;
+  }, stepMs);
+
+  slideTimer = setTimeout(() => {
+    nextSlide();
+  }, SLIDE_DURATION_MS);
+}
+
+function stopSlideshowTimer() {
+  if (slideTimer) clearTimeout(slideTimer);
+  if (slideProgressInterval) clearInterval(slideProgressInterval);
+  const progressFill = document.getElementById('slideProgressFill');
+  if (progressFill) progressFill.style.width = '0%';
+}
+
+function resetSlideshowTimer() {
+  startSlideshowTimer();
+}
+
+/* ==========================================================================
    Initial Setup & DOM Loaded
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
   setLanguage('en');
   openRoleTab('business');
-
-  // Video Showcase Autoplay & Scroll Observer
-  const showcaseVideo = document.getElementById('showcaseVideo');
-  const videoPlayBtn = document.getElementById('videoPlayBtn');
-  const videoPlayIcon = document.getElementById('videoPlayIcon');
-  const videoSection = document.getElementById('video-showcase');
-
-  if (showcaseVideo && videoSection) {
-    showcaseVideo.muted = true;
-
-    showcaseVideo.addEventListener('error', () => {
-      const cdnUrl = 'https://media.githubusercontent.com/media/Hamza-aa/GreenLegacy/main/assets/Video/1008.mp4';
-      if (!showcaseVideo.src.includes('media.githubusercontent.com')) {
-        showcaseVideo.src = cdnUrl;
-        showcaseVideo.load();
-        showcaseVideo.play().catch(() => {});
-      }
-    });
-
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.05
-    };
-
-    const videoObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          showcaseVideo.currentTime = 0;
-          videoSection.classList.add('is-active');
-          const playPromise = showcaseVideo.play();
-          if (playPromise !== undefined) {
-            playPromise.then(() => {
-              if (videoPlayIcon) videoPlayIcon.className = 'fas fa-pause';
-            }).catch(err => {
-              console.log("Autoplay paused by browser:", err);
-            });
-          }
-        } else {
-          videoSection.classList.remove('is-active');
-          showcaseVideo.pause();
-          showcaseVideo.currentTime = 0;
-          if (videoPlayIcon) videoPlayIcon.className = 'fas fa-play';
-        }
-      });
-    }, observerOptions);
-
-    videoObserver.observe(videoSection);
-
-    if (videoPlayBtn) {
-      videoPlayBtn.addEventListener('click', () => {
-        if (showcaseVideo.paused) {
-          showcaseVideo.play();
-          if (videoPlayIcon) videoPlayIcon.className = 'fas fa-pause';
-        } else {
-          showcaseVideo.pause();
-          if (videoPlayIcon) videoPlayIcon.className = 'fas fa-play';
-        }
-      });
-    }
-  }
+  initPhotoSlideshow();
 });
