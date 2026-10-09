@@ -149,7 +149,7 @@ const translations = {
     nav_download: "داگرتنی بەرنامە",
 
     hero_badge: " پلاتفۆرمی ژینگەیی زیرەک بۆ سلێمانی",
-    hero_title: "ڕاگرتنی <span class='highlight-green'>پاکی سلێمانی</span> بە ژیریی دەستکرد و خەڵات",
+    hero_title: "پاک ڕاگرتنی <span class='highlight-green'> سلێمانی</span> بە ژیریی دەستکرد و خەڵات",
     hero_subtitle: "گرین‌لیگاسی سلێمانی هاووڵاتییان، کۆمپانیاکان، کۆکەرەوەکانی ڕیسایکڵینگ و شارەوانی لە سوڕێکی تەواوی ژینگەییدا دەبەستێتەوە.",
 
     btn_download_ios: "داگرتن بۆ ئایفۆن (iPhone)",
@@ -1175,13 +1175,7 @@ function goToSlide(index) {
   const activeDot = document.getElementById(`dot-${currentSlideIndex}`);
   const dotsWrapper = document.getElementById('photoDotsWrapper');
   if (activeDot && dotsWrapper) {
-    const dotLeft = activeDot.offsetLeft;
-    const dotWidth = activeDot.offsetWidth;
-    const wrapperWidth = dotsWrapper.clientWidth;
-    dotsWrapper.scrollTo({
-      left: dotLeft - (wrapperWidth / 2) + (dotWidth / 2),
-      behavior: 'smooth'
-    });
+    dotsWrapper.scrollLeft = activeDot.offsetLeft - (dotsWrapper.clientWidth / 2) + (activeDot.offsetWidth / 2);
   }
 
   updateCounterTag();
