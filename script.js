@@ -1145,6 +1145,7 @@ function initPhotoSlideshow() {
 
   container.innerHTML = showcasePhotos.map((src, i) => `
     <div class="showcase-slide ${i === 0 ? 'active' : ''}" id="slide-${i}">
+      <img src="${src}" alt="" class="showcase-slide-bg" aria-hidden="true" />
       <img src="${src}" alt="Slemani Field Evidence Photo ${i + 1}" class="showcase-slide-img" />
     </div>
   `).join('');
