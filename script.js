@@ -1173,8 +1173,15 @@ function goToSlide(index) {
   });
 
   const activeDot = document.getElementById(`dot-${currentSlideIndex}`);
-  if (activeDot && activeDot.parentElement) {
-    activeDot.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  const dotsWrapper = document.getElementById('photoDotsWrapper');
+  if (activeDot && dotsWrapper) {
+    const dotLeft = activeDot.offsetLeft;
+    const dotWidth = activeDot.offsetWidth;
+    const wrapperWidth = dotsWrapper.clientWidth;
+    dotsWrapper.scrollTo({
+      left: dotLeft - (wrapperWidth / 2) + (dotWidth / 2),
+      behavior: 'smooth'
+    });
   }
 
   updateCounterTag();
